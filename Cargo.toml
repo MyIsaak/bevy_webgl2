@@ -22,7 +22,7 @@ default = [
 
 [dependencies]
 winit = {version = "0.25.0", features = ["web-sys"]}
-bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features=false }
+bevy = { git = "https://github.com/MyIsaak/bevy", branch = "merge-naga", default-features=false }
 
 regex = "1.4"
 cfg-if = "1.0.0"
@@ -49,7 +49,7 @@ web-sys = {version = "0.3.50", features = [
 
 [patch.crates-io]
 # bevy = {path = "../bevy", default-features=false}
-bevy = {git = "https://github.com/bevyengine/bevy", branch="main", default-features=false}
+bevy = {git = "https://github.com/MyIsaak/bevy", branch = "merge-naga", default-features=false}
 
 [dev-dependencies]
 compile-time-run = "0.2"
