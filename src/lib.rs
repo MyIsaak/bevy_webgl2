@@ -26,6 +26,7 @@ use bevy::render::{
     shader::{Shader, ShaderStage},
     RenderStage,
 };
+use bevy::prelude::Plugin;
 
 pub const SPRITE_PIPELINE_HANDLE: HandleUntyped =
     HandleUntyped::weak_from_u64(PipelineDescriptor::TYPE_UUID, 2785347840338765446);
@@ -46,10 +47,10 @@ pub enum WebGL2Stage {
 #[derive(Default)]
 pub struct WebGL2Plugin;
 
-impl Plugin for WebGL2Plugin {
-    fn build(&self, app: &mut AppBuilder) {
+impl bevy::prelude::Plugin for WebGL2Plugin {
+    fn build(&self, app: &mut App) {
         {
-            let world = app.world_mut();
+            let world = &mut app.world;
             let cell = world.cell();
             let pipelines = cell
                 .get_resource_mut::<Assets<PipelineDescriptor>>()
@@ -94,7 +95,7 @@ impl Plugin for WebGL2Plugin {
                 }
             }
         }
-        let world = app.world_mut();
+        let world = &mut app.world;
         let render_system = webgl2_render_system(world);
         let handle_events_system = webgl2_handle_window_created_events_system();
         app.add_stage_before(
